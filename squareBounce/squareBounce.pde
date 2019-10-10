@@ -12,10 +12,10 @@ void draw() {
   fill(0);
   stroke(0);
   
-  if(x < width - width / 8 && y == 0) {
+  if(x < width - width / 8 && y <= 0) {
     state = 0;
   }
-  else if(x >= width - width / 8 && y < height - width / 8) {
+  else if(x >= width - width / 8 && y <= height - width / 8) {
     state = 1;
   }
   else if(x >= width - width / 8 && y >= height - width / 8) {
