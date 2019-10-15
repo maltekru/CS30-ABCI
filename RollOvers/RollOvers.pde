@@ -1,6 +1,9 @@
 int pos = 0;
 
-int tL = 255, tR = 255, bL = 255, bR = 255;
+int[] tL = {0, 0, 200};
+int[] tR = {200, 0, 200};
+int[] bL = {170, 0, 170};
+int[] bR = {50, 200, 0};
 
 void setup() {
    size(600, 600);
@@ -28,25 +31,35 @@ void draw() {
       fill(0);
       rect(0, 0, width /2, height / 2);
       
-      fill(tR);
+      fill(tR[0], tR[1], tR[2]);
       rect(width / 2, 0, width / 2, height / 2);
       
-      fill(bL);
+      fill(bL[0], bL[1], bL[2]);
       rect(0, height / 2, width / 2, height / 2);
       
-      fill(bR);
+      fill(bR[0], bR[1], bR[2]);
       rect(width / 2, height / 2, width / 2, height / 2);
       
-      tL = 0;
+      tL[0] = 0;
+      tL[1] = 0;
+      tL[2] = 200;
     
-      if(tR < 255) {
-        tR += 5;
+      for(int i = 0; i < tR.length; i++) {
+        if(tR[i] < 255) {
+          tR[i] += 5;
+        }
       }
-      if(bL < 255) {
-        bL += 5;
+      
+      for(int i = 0; i < bL.length; i++) {
+        if(bL[i] < 255) {
+          bL[i] += 5;
+        }
       }
-      if(bR < 255) {
-        bR += 5;
+      
+      for(int i = 0; i < bR.length; i++) {
+        if(bR[i] < 255) {
+          bR[i] += 5;
+        }
       }
       break;
     case 1:
@@ -54,24 +67,30 @@ void draw() {
       fill(0);
       rect(width / 2, 0, width / 2, height / 2);
       
-      fill(tL);
+      fill(tL[0], tL[1], tL[2]);
       rect(0, 0, width /2, height / 2);
-      fill(bL);
+      fill(bL[0], bL[1], bL[2]);
       rect(0, height / 2, width / 2, height / 2);
-      
-      fill(bR);
+      fill(bR[0], bR[1], bR[2]);
       rect(width / 2, height / 2, width / 2, height / 2);
       
-      tR = 0;
+      tR[0] = 200;
+      tR[1] = 0;
+      tR[2] = 200;
     
       if(tL < 255) {
         tL += 5;
       }
-      if(bL < 255) {
-        bL += 5;
+      for(int i = 0; i < bL.length; i++) {
+        if(bL[i] < 255) {
+          bL[i] += 5;
+        }
       }
-      if(bR < 255) {
-        bR += 5;
+      
+      for(int i = 0; i < bR.length; i++) {
+        if(bR[i] < 255) {
+          bR[i] += 5;
+        }
       }
       break;
     case 2:
