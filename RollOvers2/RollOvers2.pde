@@ -1,3 +1,4 @@
+boolean tLClick = false;
 boolean bRClick = false;
 
 int pos = 0;
@@ -31,39 +32,58 @@ void draw() {
   
   switch(pos) {
     case 0:
-      bRClick = true;
+      bRClick = false;
     
-      a = 255;
+      if(!tLClick) {
+        a = 255;
+        
+        stroke(0);
+        fill(tL[0], tL[1], tL[2]);
+        rect(0, 0, width /2, height / 2);
+        
+        fill(tR[0], tR[1], tR[2], b);
+        rect(width / 2, 0, width / 2, height / 2);
+        
+        fill(bL[0], bL[1], bL[2], c);
+        rect(0, height / 2, width / 2, height / 2);
+        
+        fill(bR[0], bR[1], bR[2], d);
+        rect(width / 2, height / 2, width / 2, height / 2);
+        
+        tL[0] = 0;
+        tL[1] = 0;
+        tL[2] = 200;
       
-      stroke(0);
-      fill(tL[0], tL[1], tL[2]);
-      rect(0, 0, width /2, height / 2);
-      
-      fill(tR[0], tR[1], tR[2], b);
-      rect(width / 2, 0, width / 2, height / 2);
-      
-      fill(bL[0], bL[1], bL[2], c);
-      rect(0, height / 2, width / 2, height / 2);
-      
-      fill(bR[0], bR[1], bR[2], d);
-      rect(width / 2, height / 2, width / 2, height / 2);
-      
-      tL[0] = 0;
-      tL[1] = 0;
-      tL[2] = 200;
-    
-      if(b > 0) {
-        b -= 10;
+        if(b > 0) {
+          b -= 10;
+        }
+        if(c > 0) {
+          c -= 10;
+        }
+        if(d > 0) {
+          d -= 10;
+        }
       }
-      if(c > 0) {
-        c -= 10;
-      }
-      if(d > 0) {
-        d -= 10;
+      else if(tLClick) {
+        a = 255;
+        
+        stroke(0);
+        fill(tL[0], tL[1], tL[2]);
+        rect(0, 0, width /2, height / 2);
+        
+        fill(tR[0], tR[1], tR[2]);
+        rect(width / 2, 0, width / 2, height / 2);
+        
+        fill(bL[0], bL[1], bL[2]);
+        rect(0, height / 2, width / 2, height / 2);
+        
+        fill(bR[0], bR[1], bR[2]);
+        rect(width / 2, height / 2, width / 2, height / 2);
       }
       break;
     case 1:
-      bRClick = true;
+      bRClick = false;
+      tLClick = false;
     
       b = 255;
       
@@ -93,7 +113,8 @@ void draw() {
       }
       break;
     case 2:
-      bRClick = true;
+      bRClick = false;
+      tLClick = false;
       
       c = 255;
       stroke(0);
@@ -122,6 +143,7 @@ void draw() {
       }
       break;
     case 3:
+      tLClick = false;
       if(!bRClick) {
         d = 255;
         
@@ -133,6 +155,8 @@ void draw() {
         stroke(0);
         fill(255);
         rect(width / 2, height / 2, width / 2, height / 2);
+        
+        d = 0;
       }
       
       fill(tL[0], tL[1], tL[2], a);
@@ -167,7 +191,10 @@ void draw() {
 }
 
 void mouseClicked() {
-  if(pos == 3) {
+  if(pos == 1) {
+    tLClick = true;
+  }
+  else if(pos == 3) {
     bRClick = !bRClick;
   }
 }
