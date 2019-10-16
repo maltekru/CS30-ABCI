@@ -1,3 +1,5 @@
+boolean bRClick = false;
+
 int pos = 0;
 
 int a = 255, b = 255, c = 255, d = 255;
@@ -29,6 +31,8 @@ void draw() {
   
   switch(pos) {
     case 0:
+      bRClick = true;
+    
       a = 255;
       
       stroke(0);
@@ -59,6 +63,8 @@ void draw() {
       }
       break;
     case 1:
+      bRClick = true;
+    
       b = 255;
       
       stroke(0);
@@ -87,7 +93,8 @@ void draw() {
       }
       break;
     case 2:
-    
+      bRClick = true;
+      
       c = 255;
       stroke(0);
       fill(bL[0], bL[1], bL[2]);
@@ -115,11 +122,18 @@ void draw() {
       }
       break;
     case 3:
-      d = 255;
-      
-      stroke(0);
-      fill(bR[0], bR[1], bR[2]);
-      rect(width / 2, height / 2, width / 2, height / 2);
+      if(!bRClick) {
+        d = 255;
+        
+        stroke(0);
+        fill(bR[0], bR[1], bR[2]);
+        rect(width / 2, height / 2, width / 2, height / 2);
+      }
+      else if(bRClick) {
+        stroke(0);
+        fill(255);
+        rect(width / 2, height / 2, width / 2, height / 2);
+      }
       
       fill(tL[0], tL[1], tL[2], a);
       rect(0, 0, width /2, height / 2);
@@ -150,4 +164,10 @@ void draw() {
   
   line(0, height / 2, width, height / 2);
   line(width / 2, 0, width / 2, height);
+}
+
+void mouseClicked() {
+  if(pos == 3) {
+    bRClick = !bRClick;
+  }
 }
