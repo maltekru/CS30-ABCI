@@ -1,8 +1,10 @@
 int pos = 0;
 
+int a = 255, b = 255, c = 255, d = 255;
+
 int[] tL = {0, 0, 200};
 int[] tR = {200, 0, 200};
-int[] bL = {170, 0, 170};
+int[] bL = {0, 170, 170};
 int[] bR = {50, 200, 0};
 
 void setup() {
@@ -27,120 +29,117 @@ void draw() {
   
   switch(pos) {
     case 0:
+      a = 255;
+      
       stroke(0);
-      fill(0);
+      fill(tL[0], tL[1], tL[2]);
       rect(0, 0, width /2, height / 2);
       
-      fill(tR[0], tR[1], tR[2]);
+      fill(tR[0], tR[1], tR[2], b);
       rect(width / 2, 0, width / 2, height / 2);
       
-      fill(bL[0], bL[1], bL[2]);
+      fill(bL[0], bL[1], bL[2], c);
       rect(0, height / 2, width / 2, height / 2);
       
-      fill(bR[0], bR[1], bR[2]);
+      fill(bR[0], bR[1], bR[2], d);
       rect(width / 2, height / 2, width / 2, height / 2);
       
       tL[0] = 0;
       tL[1] = 0;
       tL[2] = 200;
     
-      for(int i = 0; i < tR.length; i++) {
-        if(tR[i] < 255) {
-          tR[i] += 5;
-        }
+      if(b > 0) {
+        b -= 10;
       }
-      
-      for(int i = 0; i < bL.length; i++) {
-        if(bL[i] < 255) {
-          bL[i] += 5;
-        }
+      if(c > 0) {
+        c -= 10;
       }
-      
-      for(int i = 0; i < bR.length; i++) {
-        if(bR[i] < 255) {
-          bR[i] += 5;
-        }
+      if(d > 0) {
+        d -= 10;
       }
       break;
     case 1:
+      b = 255;
+      
       stroke(0);
-      fill(0);
+      fill(tR[0], tR[1], tR[2]);
       rect(width / 2, 0, width / 2, height / 2);
       
-      fill(tL[0], tL[1], tL[2]);
+      fill(tL[0], tL[1], tL[2], a);
       rect(0, 0, width /2, height / 2);
-      fill(bL[0], bL[1], bL[2]);
+      fill(bL[0], bL[1], bL[2], c);
       rect(0, height / 2, width / 2, height / 2);
-      fill(bR[0], bR[1], bR[2]);
+      fill(bR[0], bR[1], bR[2], d);
       rect(width / 2, height / 2, width / 2, height / 2);
       
       tR[0] = 200;
       tR[1] = 0;
       tR[2] = 200;
     
-      for(int i = 0; i < tL.length; i++) {
-        if(tL[i] < 255) {
-          tL[i] += 5;
-        }
+      if(a > 0) {
+        a -= 10;
       }
-      for(int i = 0; i < bL.length; i++) {
-        if(bL[i] < 255) {
-          bL[i] += 5;
-        }
+      if(c > 0) {
+        c -= 10;
       }
-      
-      for(int i = 0; i < bR.length; i++) {
-        if(bR[i] < 255) {
-          bR[i] += 5;
-        }
+      if(d > 0) {
+        d -= 10;
       }
       break;
     case 2:
+    
+      c = 255;
       stroke(0);
-      fill(0);
+      fill(bL[0], bL[1], bL[2]);
       rect(0, height / 2, width / 2, height / 2);
       
-      fill(tL);
+      fill(tL[0], tL[1], tL[2], a);
       rect(0, 0, width /2, height / 2);
-      fill(tR);
+      fill(tR[0], tR[1], tR[2], b);
       rect(width / 2, 0, width / 2, height / 2);
-      fill(bR);
+      fill(bR[0], bR[1], bR[2], d);
       rect(width / 2, height / 2, width / 2, height / 2);
       
-      bL = 0;
+      bL[0] = 0;
+      bL[1] = 170;
+      bL[2] = 170;
     
-      if(tL < 255) {
-        tL += 5;
+      if(a > 0) {
+        a -= 10;
       }
-      if(tR < 255) {
-        tR += 5;
+      if(b > 0) {
+        b -= 10;
       }
-      if(bR < 255) {
-        bR += 5;
+      if(d > 0) {
+        d -= 10;
       }
       break;
     case 3:
+      d = 255;
+      
       stroke(0);
-      fill(0);
+      fill(bR[0], bR[1], bR[2]);
       rect(width / 2, height / 2, width / 2, height / 2);
       
-      fill(tL);
+      fill(tL[0], tL[1], tL[2], a);
       rect(0, 0, width /2, height / 2);
-      fill(tR);
+      fill(tR[0], tL[1], tL[2], b);
       rect(width / 2, 0, width / 2, height / 2);
-      fill(bL);
+      fill(bL[0], bL[1], bL[2], c);
       rect(0, height / 2, width / 2, height / 2);
       
-      bR = 0;
+      bR[0] = 50;
+      bR[1] = 200;
+      bR[2] = 0;
     
-      if(tL < 255) {
-        tL += 5;
+      if(a > 0) {
+        a -= 10;
       }
-      if(tR < 255) {
-        tR += 5;
+      if(b > 0) {
+        b -= 10;
       }
-      if(bL < 255) {
-        bL += 5;
+      if(c > 0) {
+        c -= 10;
       }
       break;
   }
